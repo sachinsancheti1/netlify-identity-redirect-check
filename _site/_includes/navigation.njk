@@ -1,0 +1,32 @@
+<div class="navigation">
+  <div class="nav-container">
+    <nav role="navigation">
+      <div class="nav-mobile">
+        <button id="nav-toggle" aria-label="Toggle navigation" onclick="tog()"><span></span></button>
+      </div>
+      <script>
+        function tog(){
+      document.getElementById('nav-toggle').classList.toggle('active');document.getElementById('nav-toggleMe').classList.toggle('active');
+        }
+    </script>
+      <ul id="nav-toggleMe">
+      {% set mainNav = collections.all | eleventyNavigation('mainleft') %}
+        <li><span data-netlify-identity-button></span></li>
+        {% for nav in mainNav -%}
+        <li {% if nav.url==page.url or nav.url==sub %} class="active" {% endif %}><a href="{{nav.url}}">
+          {% set icon %}icons/{{nav.order}}.njk{% endset %}{% include icon %}
+          <span>{{nav.key}}</span></a>
+        </li>
+        {% endfor -%}
+      <li><a href="/" aria-label="Home Page"><img src="/images/house-service.svg" alt="logo" width="60" loading="eager" /></a></li>
+      {% set mainNav = collections.all | eleventyNavigation('main') %}
+        {% for nav in mainNav -%}
+        <li {% if nav.url==page.url or nav.url==sub %} class="active" {% endif %}><a href="{{nav.url}}">
+          {% set icon %}icons/{{nav.order}}.njk{% endset %}{% include icon %}
+          <span>{{nav.key}}</span></a>
+        </li>
+        {% endfor -%}
+      </ul>
+    </nav>
+  </div>
+</div>

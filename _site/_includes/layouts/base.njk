@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap" media="print" onload="this.media='all'" />
+    <title>{{title | dump | replace('"','')}}</title>
+    <meta content="{{description}}" name="description" />
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="/css/main.css">
+    <script type="text/javascript" src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+<body>
+
+    <div class="bg-white" id="sct-top" role="main">
+        {% include "navigation.njk" %}
+
+        {% block header %}{% endblock %}
+        {% block content %}{% endblock %}{{ content | safe }}
+    </div>
+    {% include "footer.njk" %}
+
+   <script>{% include "js/ntl-protected.js" %}</script>
+
+</body>
+</html>

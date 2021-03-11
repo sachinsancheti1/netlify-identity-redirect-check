@@ -1,0 +1,2 @@
+/houses-for-sale/* 200! Role=customer
+/houses-for-sale/* /no-access/ 404!
