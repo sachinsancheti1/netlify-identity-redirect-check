@@ -1,4 +1,4 @@
 module.exports = {
-  rootUrl: 'https://zen-lewin-04367e.netlify.app',
+  rootUrl: 'https://nifty-payne-1700e9.netlify.app',
   buildTime: new Date(),
 }
