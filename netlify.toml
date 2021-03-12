@@ -6,8 +6,3 @@
 [dev]
   framework = "eleventy"
   command = "eleventy --serve"
-
-[[redirects]]
-  from = "/no-access/index.html"
-  to = "/no-access/index.html"
-  status = 200
