@@ -19,6 +19,13 @@ const updateUserInfo = (user) => {
   container.innerHTML = '';
 
   if (user) {
+    const timeCheck =
+      netlifyIdentity.currentUser().token.expires_at > new Date().getTime() ? false : true;
+    if (timeCheck) {
+      netlifyIdentity.refresh(); //.then((jwt)=>console.log(jwt))
+      console.log('Welcome', user.user_metadata.full_name);
+    }
+
     b1.innerText = 'Log Out';
     b1.addEventListener('click', () => {
       netlifyIdentity.logout();
@@ -48,6 +55,8 @@ const updateUserInfo = (user) => {
 
     b2.innerText = 'Sign Up';
     b2.addEventListener('click', signup);
+
+    netlifyIdentity.open();
   }
 
   // add the updated buttons back to the user info div
@@ -58,3 +67,6 @@ const updateUserInfo = (user) => {
 netlifyIdentity.on('init', updateUserInfo);
 netlifyIdentity.on('login', updateUserInfo);
 netlifyIdentity.on('logout', updateUserInfo);
+netlifyIdentity.on('error', (err) => console.error('Error', err));
+netlifyIdentity.on('open', () => console.log('Widget opened'));
+netlifyIdentity.on('close', () => console.log('Widget closed'));
